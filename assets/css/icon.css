@@ -1,0 +1,9 @@
+.widget { display: block; position: fixed; z-index: 4; }
+.widget-top-left { top: 50px; left: 30px; }
+.widget-top-right { top: 50px; right: 30px; }
+.widget-bottom-left { bottom: 50px; left: 30px; }
+.widget-bottom-right { bottom: 50px; right: 30px; }
+
+.icon-big { width: 30px; height: 30px; }
+.icon-middle { width: 50px; height: 50px; }
+.icon-small { width: 70px; height: 70px; }

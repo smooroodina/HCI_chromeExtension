@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+      html, body, #HCI_modalWindow { width:600px; height:450px; }
+      textarea { border: 1px solid slategray; border-radius: 2px; resize: none;}
+      .flex-center { display: flex; justify-content: center; align-items: center; }
+      .modal { display: flex; position:absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
+      .modal-overlay { position:fixed; width: 100%; height: 100%; background-color: black; opacity: 30%; z-index: 6; }
+      .modal-dialog { position: relative; margin: 0 auto; width: auto; height: auto; overflow: hidden; text-align:center; background-color: white; z-index: 7; }
+      #generateEmailModal { width:600px; height:450px; }
+      .modal-header { height: 50px; background-color: slategray; color:white; font-size:x-large; }
+      .modal-title { position: absolute; left: 30px; }
+      .modal-title-other { position: absolute; left: 130px; color: inherit; cursor: pointer; }
+      .close { all: unset; position: absolute; right:20px; font-size: x-large;}
+      .close:hover { color: skyblue; }
+      .modal-body { margin: 0; height: 350px; }
+      .content-form { display: flex; flex-direction: column; margin: 0;}
+      .content-form td { padding-bottom: 5px; }
+      .content-form label { display: inline-block; width: 100px; }
+      .content-form input , .content-form textarea { width: 350px; }
+      .modal-footer { position:absolute; bottom: 0px; width: 100%; height: 40px;
+        text-align: center; }
+      .btn { all: unset; padding: 2px 15px; border: 1px solid slategray; border-radius: 5px; font-size: medium; }
+      .btn:disabled { opacity: 50%; }
+      .btn-primary { margin-bottom: 10px; background-color: skyblue; color: white; }
+      .btn-secondary { background-color: white; color: slategrey; }
+      .btn-generate { background-color: yellow; color: slategray; }
+      .btn:hover { border-color: black; color: black; cursor: pointer; }
+      .btn:active { border-color: lightgray; color: lightgrey; }
+      #resultArea { width: 500px; height:150px; }
+      #resultArea:disabled { background-color: lightgray;}
+      
+      .square{
+        display: none;
+        justify-content: center;
+        align-items: center;
+        width: 500px;
+        height:156px;
+      }
+      .spin {
+        height: 45px;
+        width: 45px;
+        border-radius: 50%;
+        border:dashed 5px black;
+        -webkit-animation-name: spin;
+        -webkit-animation-duration: 2.5s;
+        -webkit-animation-iteration-count: infinite;
+        -webkit-animation-timing-function: linear;
+      }
+      @-webkit-keyframes spin {
+        from   {  -webkit-transform: rotate(0deg); }
+        to   {  -webkit-transform: rotate(360deg); }
+      }
+
+    </style>
+  </head>
+  <body>
+    <div id="HCI_modalWindow" class="modal flex-center" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <!--<div class="modal-overlay"></div>-->
+      <div class="modal-dialog" role="document">
+        <div id="generateEmailModal" class="modal-content">
+          <div class="modal-header flex-center">
+            <h5 class="modal-title" id="exampleModalLabel">내용 생성</h5>
+            <a class="modal-title-other" href="./modal_improveEmail.html"><h6>내용 교정</h6></a>
+            <!--<button type="button" class="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none";'
+              <span aria-hidden="true">&times;</span>
+            </button>-->
+          </div>
+          <div class="modal-body flex-center">
+            <!-- Form으로 되어있긴 하지만... submit 안하고 fetch로 API 요청할것임 -->
+            <form id="formGenerateEmail" class="content-form" action="/createEmail" method="post">
+              <table>
+                <tbody>
+                  <tr>
+                    <td>
+                      <br><br>
+                      <label for="receiver">받는 사람</label
+                      ><input type="text" name="receiver" id="receiver" value>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <label for="purpose">메일 목적</label
+                      ><textarea name="purpose" id="purpose" value></textarea>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <button type="button" id="generateBtn" class="btn btn-generate">내용 생성</button>
+                      <br><br>
+                    </td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <div id="loading" class="square">
+                        <div class="spin"></div>
+                      </div>
+                      <textarea name="result" id="resultArea" disabled></textarea>
+                    </td>
+                  </tr>
+                </tbody>
+              </table>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button type="button" id="applyBtn" class="btn btn-primary">적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>-->  
+          </div>
+        </div>
+      </div>
+    </div>
+    <script type="text/javascript" src="assets/js/modal.js"></script>
+    <script type="text/javascript" src="assets/js/modal_generateEmail.js"></script>
+  </body>
+</html>
