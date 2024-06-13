@@ -5,16 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      a { text-decoration: none; }
       html, body, #HCI_modalWindow { width:600px; height:450px; }
       textarea { border: 1px solid slategray; border-radius: 2px; resize: none;}
+      textarea:disabled { color:lightgray; }
       .flex-center { display: flex; justify-content: center; align-items: center; }
       .modal { display: flex; position:absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
       .modal-overlay { position:fixed; width: 100%; height: 100%; background-color: black; opacity: 30%; z-index: 6; }
       .modal-dialog { position: relative; margin: 0 auto; width: auto; height: auto; overflow: hidden; text-align:center; background-color: white; z-index: 7; }
       #generateEmailModal { width:600px; height:450px; }
       .modal-header { height: 50px; background-color: slategray; color:white; font-size:x-large; }
-      .modal-title { position: absolute; left: 30px; }
-      .modal-title-other { position: absolute; left: 130px; color: inherit; cursor: pointer; }
+      .modal-title { position: absolute; padding:5px; left: 30px; background-color: blueviolet; color: yellow; }
+      .modal-title-other { position: absolute; padding-left:20px; left: 135px; border-left: 2px solid white; color: #f0f0f0; cursor: pointer; }
+      .modal-title-other:hover { color: yellow; }
       .close { all: unset; position: absolute; right:20px; font-size: x-large;}
       .close:hover { color: skyblue; }
       .modal-body { margin: 0; height: 350px; }
@@ -27,12 +30,12 @@
       .btn { all: unset; padding: 2px 15px; border: 1px solid slategray; border-radius: 5px; font-size: medium; }
       .btn:disabled { opacity: 50%; }
       .btn-primary { margin-bottom: 10px; background-color: skyblue; color: white; }
-      .btn-secondary { background-color: white; color: slategrey; }
-      .btn-generate { background-color: yellow; color: slategray; }
+      .btn-secondary { background-color: white; color: black; }
+      .btn-generate { background-color: yellow; color: black; }
       .btn:hover { border-color: black; color: black; cursor: pointer; }
       .btn:active { border-color: lightgray; color: lightgrey; }
-      #resultArea { width: 500px; height:150px; }
-      #resultArea:disabled { background-color: lightgray;}
+      #resultArea { width: 500px; height:150px; background-color: lightcyan; }
+      #resultArea:disabled { background-color:lightgoldenrodyellow;}
       
       .square{
         display: none;
@@ -85,7 +88,7 @@
                   <tr>
                     <td>
                       <label for="purpose">메일 목적</label
-                      ><textarea name="purpose" id="purpose" value></textarea>
+                      ><textarea name="purpose" id="purpose" placeholder="ex) 교수님과 상담으로 연구실 방문 목적" value></textarea>
                     </td>
                   </tr>
                   <tr>

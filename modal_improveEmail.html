@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+      a { text-decoration: none; }
       html, body, #HCI_modalWindow { width: 600px; height: 550px; } /* this is the maximum size!!! */
       textarea { padding: 5px; border: 1px solid slategray; border-radius: 2px; resize: none;}
-      textarea:disabled { background-color: lightgray; }
+      textarea:disabled { background-color: lightgoldenrodyellow; }
       .flex-center { display: flex; justify-content: center; align-items: center; }
       .modal { display: flex; position:absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
       .modal-overlay { position:fixed; width: 100%; height: 100%; background-color: black; opacity: 30%; z-index: 6; }
@@ -17,8 +18,9 @@
       #improveEmailModal_2 { display:none; width:600px; height:550px; }
       .modal-header { z-index: 2; position: fixed; top: 0; left: 0; width: 100%; height: 50px; background-color: slategray; color:white; font-size:x-large; }
       .headerblank { height: 50px; }
-      .modal-title { position: absolute; left: 30px; }
-      .modal-title-other { position: absolute; left: 130px;  color: inherit; cursor: pointer; }
+      .modal-title { position: absolute; padding:5px; left: 130px; background-color: blueviolet;  color: yellow; }
+      .modal-title-other { position: absolute; padding-right:20px; left: 30px; border-right: 2px solid white; color: #f0f0f0; cursor: pointer; }
+      .modal-title-other:hover { color: yellow; }
       .close { all: unset; position: absolute; right:20px; font-size: x-large;}
       .close:hover { color: skyblue; }
       .modal-body { margin: 0; height: 450px; }
@@ -35,8 +37,8 @@
       .btn { all: unset; margin-top: 10px; padding: 2px 15px; border: 1px solid slategray; border-radius: 5px; font-size: medium; }
       .btn:disabled { opacity: 50%; }
       .btn-primary { background-color: skyblue; color: white; }
-      .btn-secondary { background-color: white; color: slategrey; }
-      .btn-generate { background-color: yellow; color: slategray; }
+      .btn-secondary { background-color: white; color: black; }
+      .btn-generate { background-color: yellow; color: black; }
       .btn:hover { border-color: black; color: black; cursor: pointer; }
       .btn:active { border-color: lightgray; color: lightgrey; }
       /** .range-label { display: block; width: 200px; }
@@ -60,7 +62,6 @@
       #optionDescriptionArea::-webkit-scrollbar{ display:none; }
       #exampleArea { margin-top: 20px; width: 220px; min-height: 100px; }
       #output { display: none; }
-    
       .square{
         align-items: center;
       }
@@ -129,21 +130,20 @@
       <div class="modal-dialog" role="document">
         <div id="improveEmailModal_1" class="modal-content">
           <div class="modal-header flex-center">
-            <h5 class="modal-title">내용 교정</h5>
             <a class="modal-title-other" href="./modal_generateEmail.html"><h6>내용 생성</h6></a>
+            <h5 class="modal-title">내용 교정</h5>
             <!--<button type="button" class="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none";'
               <span aria-hidden="true">&times;</span>
             </button>-->
           </div>
           <div class="headerblank"></div>
           <div id="emailBodySection" class="modal-body flex-center wrapper-flex-column">
-            <h5>- 메일 내용 -</h5>
+            <h5>메일 내용</h5>
             <div id="textareaWrapper">
               <div id="highlightDiv"></div>
-              <div id="emailBody" contenteditable="plaintext-only" draggable="false">This is some sample text. You can select a portion of this text to see the selected range and the text itself.</div>
+              <div id="emailBody" contenteditable="plaintext-only" draggable="false">여기에 메일 내용을 붙여넣어 주세요.</div>
               <input id="hiddenInput" type="text">
             </div>
-            <div><input type="checkbox" id="changeSelectedOnly">선택한 부분만 교정</div>
           </div>
           <hr>
           <div id="emailOptionSection" class="modal-body flex-center">
@@ -151,7 +151,7 @@
             <div class="wrapper-flex-row">
               <form id="formImproveEmail" class="content-form" action="/improveEmail" method="post">
                 <table>
-                  <h5>- 추가 옵션 -</h5>
+                  <h5>추가 옵션</h5>
                   <tbody>
                     <tr>
                       <td><label for="tone">말투</label></td>
@@ -164,20 +164,21 @@
                         <input type="range" name="quantity" id="quantity" min="0" max="3" value>
                       </td>
                     </tr>
-                    <tr>
-                      <td><label for="expression">표현</label></td>
-                      <td><div class="range-label"><span class="range-left">0:용건만</span><span class="range-right">문안 인사:3</span></div>
-                        <input type="range" name="expression" id="expression" min="0" max="3" value></td>
-                    </tr>
                     <tr><td></td><td>
                       <br><br>
                     </td></tr>
                     <tr>
                       <td><label for="spelling">맞춤법</label></td>
                       <td class="various-options">
-                        <div><input type="checkbox" name="spelling_1" id="spelling_1" value="오타">오타</div>
-                        <div><input type="checkbox" name="spelling_2" id="spelling_2" value="띄어쓰기">띄어쓰기</div>
-                        <div><input type="checkbox" name="spelling_3" id="spelling_3" value="문장부호">문장부호</div>
+                        <div><input type="checkbox" id="spelling_all" checked>전체선택</div>
+                      </td>
+                    </tr>
+                    <tr>
+                      <td></td>
+                      <td class="various-options">
+                        <div><input type="checkbox" name="spelling_1" id="spelling_1" class="spelling" value="오타" checked>오타</div>
+                        <div><input type="checkbox" name="spelling_2" id="spelling_2" class="spelling" value="띄어쓰기" checked>띄어쓰기</div>
+                        <div><input type="checkbox" name="spelling_3" id="spelling_3" class="spelling" value="문장부호" checked>문장부호</div>
                       </td>
                     </tr>
                     <tr>
@@ -201,12 +202,13 @@
           </div>
           <div class="modal-footer">
             <div class="modal-footer-top-grad"></div>
-            <button type="button" id="improveBtn" class="btn btn-generate">교정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="improveBtn" class="btn btn-generate">교정 ❯</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>-->
           </div>
         </div>
         <div id="improveEmailModal_2" class="modal-content">
           <div class="modal-header flex-center">
+            <a class="modal-title-other" href="./modal_generateEmail.html"><h6>내용 생성</h6></a>
             <h5 class="modal-title">내용 교정</h5>
             <!--<button type="button" class;="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none"'
               <span aria-hidden="true">&times;</span>
@@ -236,7 +238,7 @@
           </div>
           <div class="modal-footer">
             <div class="modal-footer-top-grad"></div>
-            <button type="button" id="backToOptionBtn" class="btn btn-generate">옵션 재설정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="backToOptionBtn" class="btn btn-generate">❮ 옵션 재설정</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" id="applyBtn" class="btn btn-primary">적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp; 
             <!--<button type="button" class="btn btn-secondary">취소</button>-->
           </div>

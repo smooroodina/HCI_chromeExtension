@@ -25,19 +25,22 @@ var improveEmail = {
         document.getElementById("improveBtn").addEventListener("click", improveEmail.APIRequest);
         document.getElementById("backToOptionBtn").addEventListener("click", improveEmail.backToOption);
         document.getElementById("applyBtn").addEventListener("click", improveEmail.Apply);
+        document.getElementById("spelling_all").addEventListener("click", improveEmail.SpellingAll);
     },
-
+    SpellingAll: function(e) {
+            document.querySelectorAll(".spelling").forEach((spelling) => spelling.checked = e.target.checked);
+    },
     APIRequest: function() {
         params = modal.GetParams(improveEmail.paramList);
         params["emailBody"] = document.getElementById("emailBody").textContent;
         if(params == false) return false;
-        const changeSelectedOnly = document.getElementById("changeSelectedOnly");
+        /*const changeSelectedOnly = document.getElementById("changeSelectedOnly");
         if(changeSelectedOnly.checked) {
             params["emailBody_selected"] = selectedRanges;
         }else {
             const emailBody = document.getElementById("emailBody");
             params["emailBody_selected"] = [{start:0, end:emailBody.textContent.length}]
-        }
+        }*/
         params["spelling"] = [];
         for(const key in params) {
             const [groupKey, index] = key.split("_");
