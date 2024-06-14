@@ -85,6 +85,7 @@ var improveEmail = {
         document.getElementById("loading").style.display = "none";
         document.getElementById("output").style.display = "flex";
         document.getElementById("outputEmailArea").value = result.correctedBody ?? "서버에서 결과 불러오기에 실패했습니다:(";
+        document.getElementById("applyBtn").removeAttribute("disabled");
     },
 
     backToOption: function() {
@@ -98,7 +99,7 @@ var improveEmail = {
         let resultText = document.getElementById("outputEmailArea").value;
         await navigator.clipboard.writeText(resultText)
         console.log("copied to clipboard");
-        e.target.innerText += "✔";
+        e.target.innerText = "적용(복사)✔";
     },
 
     MaintainDraggedText: function() {
