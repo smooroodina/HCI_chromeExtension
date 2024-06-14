@@ -38,7 +38,9 @@
       .btn:disabled { opacity: 50%; }
       .btn-primary { background-color: skyblue; color: white; }
       .btn-secondary { background-color: white; color: black; }
-      .btn-generate { background-color: yellow; color: black; }
+      .btn-generate { border: 2px dashed black; background-color: yellow; color: black; font-weight: bold; }
+      .btn-generate:hover { background-color: plum; }
+      .btn-back { background-color: yellow; color: black; }
       .btn:hover { border-color: black; color: black; cursor: pointer; }
       .btn:active { border-color: lightgray; color: lightgrey; }
       /** .range-label { display: block; width: 200px; }
@@ -240,7 +242,7 @@
           </div>
           <div class="modal-footer">
             <div class="modal-footer-top-grad"></div>
-            <button type="button" id="backToOptionBtn" class="btn btn-generate">❮ 옵션 재설정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="backToOptionBtn" class="btn btn-back">❮ 옵션 재설정</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <button type="button" id="applyBtn" class="btn btn-primary">적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp; 
             <!--<button type="button" class="btn btn-secondary">취소</button>-->
           </div>
