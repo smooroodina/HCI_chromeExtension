@@ -84,7 +84,7 @@ var improveEmail = {
     showResult: function(result) { 
         document.getElementById("loading").style.display = "none";
         document.getElementById("output").style.display = "flex";
-        document.getElementById("outputEmailArea").value = result.correctedBody; 
+        document.getElementById("outputEmailArea").value = result.correctedBody ?? "서버에서 결과 불러오기에 실패했습니다:(";
     },
 
     backToOption: function() {

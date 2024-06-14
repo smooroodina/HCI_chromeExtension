@@ -20,7 +20,7 @@ var generateEmail = {
         document.getElementById("loading").style.display = "none";
         document.getElementById("resultArea").style.display = "flex";
         document.getElementById("resultArea").removeAttribute("disabled");
-        document.getElementById("resultArea").value = result.emailBody; 
+        document.getElementById("resultArea").value = result.emailBody ?? "서버에서 결과 불러오기에 실패했습니다:("; 
     },
 
     Apply: async function(e) {

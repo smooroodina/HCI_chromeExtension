@@ -6,8 +6,10 @@
     <title>Document</title>
     <style>
       a { text-decoration: none; }
+      h4 { margin:0; }
       html, body, #HCI_modalWindow { width:600px; height:450px; }
-      textarea { border: 1px solid slategray; border-radius: 2px; resize: none;}
+      input { background-color: lightgoldenrodyellow; }
+      textarea { border: 1px solid slategray; border-radius: 2px; resize: none; background-color: lightgoldenrodyellow;}
       textarea:disabled { color:lightgray; }
       .flex-center { display: flex; justify-content: center; align-items: center; }
       .modal { display: flex; position:absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
@@ -15,8 +17,8 @@
       .modal-dialog { position: relative; margin: 0 auto; width: auto; height: auto; overflow: hidden; text-align:center; background-color: white; z-index: 7; }
       #generateEmailModal { width:600px; height:450px; }
       .modal-header { height: 50px; background-color: slategray; color:white; font-size:x-large; }
-      .modal-title { position: absolute; padding:5px; left: 30px; background-color: blueviolet; color: yellow; }
-      .modal-title-other { position: absolute; padding-left:20px; left: 135px; border-left: 2px solid white; color: #f0f0f0; cursor: pointer; }
+      .modal-title { position: absolute; padding:5px; left: 30px; background-color: rgb(100, 100, 150); color: yellow; }
+      .modal-title-other { position: absolute; padding-left:20px; left: 145px; border-left: 2px solid white; color: #f0f0f0; cursor: pointer; }
       .modal-title-other:hover { color: yellow; }
       .close { all: unset; position: absolute; right:20px; font-size: x-large;}
       .close:hover { color: skyblue; }
@@ -35,8 +37,8 @@
       .btn:hover { border-color: black; color: black; cursor: pointer; }
       .btn:active { border-color: lightgray; color: lightgrey; }
       #resultArea { width: 500px; height:150px; background-color: lightcyan; }
-      #resultArea:disabled { background-color:lightgoldenrodyellow;}
-      
+      #resultArea:disabled { opacity: 40%; background-color: lightgray;}
+      #label-purpose { position:relative; bottom: 15px; }
       .square{
         display: none;
         justify-content: center;
@@ -67,7 +69,7 @@
       <div class="modal-dialog" role="document">
         <div id="generateEmailModal" class="modal-content">
           <div class="modal-header flex-center">
-            <h5 class="modal-title" id="exampleModalLabel">내용 생성</h5>
+            <h5 class="modal-title" id="exampleModalLabel">*내용 생성</h5>
             <a class="modal-title-other" href="./modal_improveEmail.html"><h6>내용 교정</h6></a>
             <!--<button type="button" class="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none";'
               <span aria-hidden="true">&times;</span>
@@ -81,13 +83,13 @@
                   <tr>
                     <td>
                       <br><br>
-                      <label for="receiver">받는 사람</label
+                      <label for="receiver"><h4>받는 사람</h4></label
                       ><input type="text" name="receiver" id="receiver" value>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label for="purpose">메일 목적</label
+                      <label for="purpose" id="label-purpose"><h4>메일 목적</h4></label
                       ><textarea name="purpose" id="purpose" placeholder="ex) 교수님과 상담으로 연구실 방문 목적" value></textarea>
                     </td>
                   </tr>

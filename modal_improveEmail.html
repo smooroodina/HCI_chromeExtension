@@ -18,7 +18,7 @@
       #improveEmailModal_2 { display:none; width:600px; height:550px; }
       .modal-header { z-index: 2; position: fixed; top: 0; left: 0; width: 100%; height: 50px; background-color: slategray; color:white; font-size:x-large; }
       .headerblank { height: 50px; }
-      .modal-title { position: absolute; padding:5px; left: 130px; background-color: blueviolet;  color: yellow; }
+      .modal-title { position: absolute; padding:5px; left: 130px; background-color: rgb(100, 100, 150);  color: yellow; }
       .modal-title-other { position: absolute; padding-right:20px; left: 30px; border-right: 2px solid white; color: #f0f0f0; cursor: pointer; }
       .modal-title-other:hover { color: yellow; }
       .close { all: unset; position: absolute; right:20px; font-size: x-large;}
@@ -56,12 +56,13 @@
       .view-result textarea { margin-top: 5px; height: 350px; }
       #emailBodySection { height:350px; }
       #emailBodySection > * { width: 80%; text-align: left; }
-      #emailBody { height: 250px; }
+      #emailBody { height: 250px; background-color: lightgoldenrodyellow;}
       #emailOptionSection { height:300px; margin-bottom: 100px;}
       #optionDescriptionArea { opacity: 0; padding: 0 10px; width: 230px; max-height: 350px; overflow-x: hidden; overflow-y: scroll; border-left: 1px solid slategray; font-size: small; text-align: left; word-break: break-all; }
       #optionDescriptionArea::-webkit-scrollbar{ display:none; }
-      #exampleArea { margin-top: 20px; width: 220px; min-height: 100px; }
+      #exampleArea { margin-top: 20px; width: 220px; min-height: 100px; background-color: lightcyan; }
       #output { display: none; }
+      #outputEmailArea { background-color: lightcyan; }
       .square{
         align-items: center;
       }
@@ -106,7 +107,8 @@
         color: transparent;
         caret-color: black; /* to show the caret */
         color:black;
-        background: rgba(200, 54, 54, 0);; 
+        /*background: rgba(200, 54, 54, 0);*/
+        background-color: lightgoldenrodyellow; 
       }
       #highlightDiv {
         z-index: 0;
@@ -131,14 +133,14 @@
         <div id="improveEmailModal_1" class="modal-content">
           <div class="modal-header flex-center">
             <a class="modal-title-other" href="./modal_generateEmail.html"><h6>내용 생성</h6></a>
-            <h5 class="modal-title">내용 교정</h5>
+            <h5 class="modal-title">*내용 교정</h5>
             <!--<button type="button" class="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none";'
               <span aria-hidden="true">&times;</span>
             </button>-->
           </div>
           <div class="headerblank"></div>
           <div id="emailBodySection" class="modal-body flex-center wrapper-flex-column">
-            <h5>메일 내용</h5>
+            <h4>메일 내용</h4>
             <div id="textareaWrapper">
               <div id="highlightDiv"></div>
               <div id="emailBody" contenteditable="plaintext-only" draggable="false">여기에 메일 내용을 붙여넣어 주세요.</div>
@@ -151,7 +153,7 @@
             <div class="wrapper-flex-row">
               <form id="formImproveEmail" class="content-form" action="/improveEmail" method="post">
                 <table>
-                  <h5>추가 옵션</h5>
+                  <h4>추가 옵션</h4>
                   <tbody>
                     <tr>
                       <td><label for="tone">말투</label></td>
