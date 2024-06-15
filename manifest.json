@@ -1,6 +1,6 @@
 {
     "manifest_version": 3,
-    "name": "My Extension",
+    "name": "Email Corrector",
     "version": "1.0",
     "description": "A simple Chrome extension",
     "action": {

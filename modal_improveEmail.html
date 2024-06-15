@@ -1,90 +1,312 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      a { text-decoration: none; }
-      html, body, #HCI_modalWindow { width: 600px; height: 550px; } /* this is the maximum size!!! */
-      textarea { padding: 5px; border: 1px solid slategray; border-radius: 2px; resize: none;}
-      textarea:disabled { background-color: lightgoldenrodyellow; }
-      .flex-center { display: flex; justify-content: center; align-items: center; }
-      .modal { display: flex; position:absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
-      .modal-overlay { position:fixed; width: 100%; height: 100%; background-color: black; opacity: 30%; z-index: 6; }
-      .modal-dialog { position: relative; margin: 0 auto; width: auto; height: auto; overflow: hidden; text-align:center; background-color: white; z-index: 7; }
-      #improveEmailModal_1 { display:block; overflow-x: hidden; width:600px; height:550px; }
-      #improveEmailModal_1::-webkit-scrollbar { display: none; }
-      #improveEmailModal_2 { display:none; width:600px; height:550px; }
-      .modal-header { z-index: 2; position: fixed; top: 0; left: 0; width: 100%; height: 50px; background-color: slategray; color:white; font-size:x-large; }
-      .headerblank { height: 50px; }
-      .modal-title { position: absolute; padding:5px; left: 130px; background-color: rgb(100, 100, 150);  color: yellow; }
-      .modal-title-other { position: absolute; padding-right:20px; left: 30px; border-right: 2px solid white; color: #f0f0f0; cursor: pointer; }
-      .modal-title-other:hover { color: yellow; }
-      .close { all: unset; position: absolute; right:20px; font-size: x-large;}
-      .close:hover { color: skyblue; }
-      .modal-body { margin: 0; height: 450px; }
-      .content-form { display: flex; flex-direction: column; margin: 0;}
-      .content-form td { padding-top: 5px; }
-      .content-form label { display: inline-block; width: 70px; }
-      .content-form input[type="text"] , .content-form textarea { width: 350px; }
-      .content-form table { width: 200px; font-size: small; }
-      .content-form tr > td:first-child { font-weight: bold; }
-      .content-form tr > td:nth-child(2) { text-align: left; }
-      .modal-footer { position:absolute; bottom: 0px; width: 100%; height:40px; background-color: white; text-align: center; }
-      .modal-footer-top-grad { position:absolute; bottom: 40px; width: 100%; height:20px; 
-        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); }
-      .btn { all: unset; margin-top: 10px; padding: 2px 15px; border: 1px solid slategray; border-radius: 5px; font-size: medium; }
-      .btn:disabled { opacity: 50%; }
-      .btn-primary { background-color: skyblue; color: white; }
-      .btn-secondary { background-color: white; color: black; }
-      .btn-generate { background-color: yellow; color: black; }
-      .btn:hover { border-color: black; color: black; cursor: pointer; }
-      .btn:active { border-color: lightgray; color: lightgrey; }
+      a {
+        text-decoration: none;
+      }
+      html,
+      body,
+      #HCI_modalWindow {
+        width: 600px;
+        height: 550px;
+      } /* this is the maximum size!!! */
+      textarea {
+        padding: 5px;
+        border: 1px solid slategray;
+        border-radius: 2px;
+        resize: none;
+      }
+      textarea:disabled {
+        background-color: lightgoldenrodyellow;
+      }
+      .flex-center {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }
+      .modal {
+        display: flex;
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 5;
+      }
+      .modal-overlay {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        background-color: black;
+        opacity: 30%;
+        z-index: 6;
+      }
+      .modal-dialog {
+        position: relative;
+        margin: 0 auto;
+        width: auto;
+        height: auto;
+        overflow: hidden;
+        text-align: center;
+        background-color: white;
+        z-index: 7;
+      }
+      #improveEmailModal_1 {
+        display: block;
+        overflow-x: hidden;
+        width: 600px;
+        height: 550px;
+      }
+      #improveEmailModal_1::-webkit-scrollbar {
+        display: none;
+      }
+      #improveEmailModal_2 {
+        display: none;
+        width: 600px;
+        height: 550px;
+      }
+      .modal-header {
+        z-index: 2;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 50px;
+        background-color: slategray;
+        color: white;
+        font-size: x-large;
+      }
+      .headerblank {
+        height: 50px;
+      }
+      .modal-title {
+        position: absolute;
+        padding: 5px;
+        left: 130px;
+        background-color: rgb(100, 100, 150);
+        color: yellow;
+      }
+      .modal-title-other {
+        position: absolute;
+        padding-right: 20px;
+        left: 30px;
+        border-right: 2px solid white;
+        color: #f0f0f0;
+        cursor: pointer;
+      }
+      .modal-title-other:hover {
+        color: yellow;
+      }
+      .close {
+        all: unset;
+        position: absolute;
+        right: 20px;
+        font-size: x-large;
+      }
+      .close:hover {
+        color: skyblue;
+      }
+      .modal-body {
+        margin: 0;
+        height: 450px;
+      }
+      .content-form {
+        display: flex;
+        flex-direction: column;
+        margin: 0;
+      }
+      .content-form td {
+        padding-top: 5px;
+      }
+      .content-form label {
+        display: inline-block;
+        width: 70px;
+      }
+      .content-form input[type="text"],
+      .content-form textarea {
+        width: 350px;
+      }
+      .content-form table {
+        width: 200px;
+        font-size: small;
+      }
+      .content-form tr > td:first-child {
+        font-weight: bold;
+      }
+      .content-form tr > td:nth-child(2) {
+        text-align: left;
+      }
+      .modal-footer {
+        position: absolute;
+        bottom: 0px;
+        width: 100%;
+        height: 40px;
+        background-color: white;
+        text-align: center;
+      }
+      .modal-footer-top-grad {
+        position: absolute;
+        bottom: 40px;
+        width: 100%;
+        height: 20px;
+        background: linear-gradient(
+          to bottom,
+          rgba(255, 255, 255, 0),
+          rgba(255, 255, 255, 1)
+        );
+      }
+      .btn {
+        all: unset;
+        margin-top: 10px;
+        padding: 2px 15px;
+        border: 1px solid slategray;
+        border-radius: 5px;
+        font-size: medium;
+      }
+      .btn:disabled {
+        opacity: 50%;
+      }
+      .btn-primary {
+        background-color: skyblue;
+        color: white;
+      }
+      .btn-secondary {
+        background-color: white;
+        color: black;
+      }
+      .btn-generate {
+        background-color: yellow;
+        color: black;
+      }
+      .btn:hover {
+        border-color: black;
+        color: black;
+        cursor: pointer;
+      }
+      .btn:active {
+        border-color: lightgray;
+        color: lightgrey;
+      }
       /** .range-label { display: block; width: 200px; }
-      .range-left { display: inline-block; position: absolute; left: 0; }
-      .range-right { display: inline-block; position: absolute; right: 0; } **/
-      .range-left { display: inline-block; width: 110px; }
-      .range-right { display: inline-block; width: 110px; text-align: right; }
-      .content-form input[type="range"] { width: 220px; }
-      .various-options { display: flex; flex-direction: row; width: 250px; }
-      .various-options div { width: 75px; text-align: left;}
-      .wrapper-flex-row { display: flex; }
-      .wrapper-flex-column { display: flex; flex-direction: column; }
-      .view-result > div { display: flex; flex-direction: column; justify-content: center; width: 250px; text-align: left; font-weight: bold; }
-      .view-result > div:nth-child(2) { width: 50px; text-align: center; }
-      .view-result textarea { margin-top: 5px; height: 350px; }
-      #emailBodySection { height:350px; }
-      #emailBodySection > * { width: 80%; text-align: left; }
-      #emailBody { height: 250px; background-color: lightgoldenrodyellow;}
-      #emailOptionSection { height:300px; margin-bottom: 100px;}
-      #optionDescriptionArea { opacity: 0; padding: 0 10px; width: 230px; max-height: 350px; overflow-x: hidden; overflow-y: scroll; border-left: 1px solid slategray; font-size: small; text-align: left; word-break: break-all; }
-      #optionDescriptionArea::-webkit-scrollbar{ display:none; }
-      #exampleArea { margin-top: 20px; width: 220px; min-height: 100px; background-color: lightcyan; }
-      #output { display: none; }
-      #outputEmailArea { background-color: lightcyan; }
-      .square{
+       .range-left { display: inline-block; position: absolute; left: 0; }
+       .range-right { display: inline-block; position: absolute; right: 0; } **/
+      .range-left {
+        display: inline-block;
+        width: 110px;
+      }
+      .range-right {
+        display: inline-block;
+        width: 110px;
+        text-align: right;
+      }
+      .content-form input[type="range"] {
+        width: 220px;
+      }
+      .various-options {
+        display: flex;
+        flex-direction: row;
+        width: 250px;
+      }
+      .various-options div {
+        width: 75px;
+        text-align: left;
+      }
+      .wrapper-flex-row {
+        display: flex;
+      }
+      .wrapper-flex-column {
+        display: flex;
+        flex-direction: column;
+      }
+      .view-result > div {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        width: 250px;
+        text-align: left;
+        font-weight: bold;
+      }
+      .view-result > div:nth-child(2) {
+        width: 50px;
+        text-align: center;
+      }
+      .view-result textarea {
+        margin-top: 5px;
+        height: 350px;
+      }
+      #emailBodySection {
+        height: 350px;
+      }
+      #emailBodySection > * {
+        width: 80%;
+        text-align: left;
+      }
+      #emailBody {
+        height: 250px;
+        background-color: lightgoldenrodyellow;
+      }
+      #emailOptionSection {
+        height: 300px;
+        margin-bottom: 100px;
+      }
+      #optionDescriptionArea {
+        opacity: 0;
+        padding: 0 10px;
+        width: 230px;
+        max-height: 350px;
+        overflow-x: hidden;
+        overflow-y: scroll;
+        border-left: 1px solid slategray;
+        font-size: small;
+        text-align: left;
+        word-break: break-all;
+      }
+      #optionDescriptionArea::-webkit-scrollbar {
+        display: none;
+      }
+      #exampleArea {
+        margin-top: 20px;
+        width: 220px;
+        min-height: 100px;
+        background-color: lightcyan;
+      }
+      #output {
+        display: none;
+      }
+      #outputEmailArea {
+        background-color: lightcyan;
+      }
+      .square {
         align-items: center;
       }
       .spin {
         height: 45px;
         width: 45px;
         border-radius: 50%;
-        border:dashed 5px black;
+        border: dashed 5px black;
         -webkit-animation-name: spin;
         -webkit-animation-duration: 2.5s;
         -webkit-animation-iteration-count: infinite;
         -webkit-animation-timing-function: linear;
       }
       @-webkit-keyframes spin {
-        from   {  -webkit-transform: rotate(0deg); }
-        to   {  -webkit-transform: rotate(360deg); }
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
       }
       #textareaWrapper {
         position: relative;
         width: 500px;
       }
-      #emailBody, #highlightDiv {
+      #emailBody,
+      #highlightDiv {
         width: 100%;
         height: 250px;
         font-family: monospace;
@@ -106,111 +328,203 @@
         background: transparent;
         color: transparent;
         caret-color: black; /* to show the caret */
-        color:black;
+        color: black;
         /*background: rgba(200, 54, 54, 0);*/
-        background-color: lightgoldenrodyellow; 
+        background-color: lightgoldenrodyellow;
       }
       #highlightDiv {
         z-index: 0;
         background-color: white;
       }
       #hiddenInput {
-            position: absolute;
-            opacity: 0;
-            pointer-events: none;
-        }
+        position: absolute;
+        opacity: 0;
+        pointer-events: none;
+      }
       .highlight {
         background-color: yellow;
       }
-      
-      </style>
-</head>
-<body>
-
-    <div  id="HCI_modalWindow" class="modal flex-center" tabindex="-1" role="dialog">
+      [contenteditable="plaintext-only"]:empty:before {
+        content: attr(placeholder);
+        color: grey;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="HCI_modalWindow"
+      class="modal flex-center"
+      tabindex="-1"
+      role="dialog">
       <!--<div class="modal-overlay"></div>-->
       <div class="modal-dialog" role="document">
         <div id="improveEmailModal_1" class="modal-content">
           <div class="modal-header flex-center">
-            <a class="modal-title-other" href="./modal_generateEmail.html"><h6>내용 생성</h6></a>
+            <a class="modal-title-other" href="./modal_generateEmail.html"
+              ><h6>내용 생성</h6></a
+            >
             <h5 class="modal-title">*내용 교정</h5>
             <!--<button type="button" class="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none";'
               <span aria-hidden="true">&times;</span>
             </button>-->
           </div>
           <div class="headerblank"></div>
-          <div id="emailBodySection" class="modal-body flex-center wrapper-flex-column">
-            <h4>메일 내용</h4>
+          <div
+            id="emailBodySection"
+            class="modal-body flex-center wrapper-flex-column">
+            <h2>메일 내용</h2>
             <div id="textareaWrapper">
               <div id="highlightDiv"></div>
-              <div id="emailBody" contenteditable="plaintext-only" draggable="false">여기에 메일 내용을 붙여넣어 주세요.</div>
-              <input id="hiddenInput" type="text">
+              <div
+                id="emailBody"
+                contenteditable="plaintext-only"
+                draggable="false"
+                placeholder="여기에 메일 내용을 붙여넣어 주세요."></div>
+              <input id="hiddenInput" type="text" />
             </div>
           </div>
-          <hr>
+          <hr />
           <div id="emailOptionSection" class="modal-body flex-center">
             <!-- Form으로 되어있긴 하지만... submit 안하고 fetch로 API 요청할것임 -->
             <div class="wrapper-flex-row">
-              <form id="formImproveEmail" class="content-form" action="/improveEmail" method="post">
+              <form
+                id="formImproveEmail"
+                class="content-form"
+                action="/improveEmail"
+                method="post">
                 <table>
-                  <h4>추가 옵션</h4>
+                  <h2>추가 옵션</h2>
                   <tbody>
                     <tr>
                       <td><label for="tone">말투</label></td>
-                      <td><div class="range-label"><span class="range-left">0:친근함</span><span class="range-right">정중함:3</span></div>
-                        <input type="range" name="tone" id="tone" min="0" max="3" value></td>
+                      <td>
+                        <div class="range-label">
+                          <span class="range-left">0:친근함</span
+                          ><span class="range-right">정중함:3</span>
+                        </div>
+                        <input
+                          type="range"
+                          name="tone"
+                          id="tone"
+                          min="0"
+                          max="3"
+                          value />
+                      </td>
                     </tr>
                     <tr>
                       <td><label for="quantity">분량</label></td>
-                      <td><div class="range-label"><span class="range-left">0:간결히</span><span class="range-right">구체적:3</span></div>
-                        <input type="range" name="quantity" id="quantity" min="0" max="3" value>
+                      <td>
+                        <div class="range-label">
+                          <span class="range-left">0:간결히</span
+                          ><span class="range-right">구체적:3</span>
+                        </div>
+                        <input
+                          type="range"
+                          name="quantity"
+                          id="quantity"
+                          min="0"
+                          max="3"
+                          value />
                       </td>
                     </tr>
-                    <tr><td></td><td>
-                      <br><br>
-                    </td></tr>
+                    <tr>
+                      <td></td>
+                      <td><br /><br /></td>
+                    </tr>
                     <tr>
                       <td><label for="spelling">맞춤법</label></td>
                       <td class="various-options">
-                        <div><input type="checkbox" id="spelling_all" checked>전체선택</div>
+                        <div>
+                          <input
+                            type="checkbox"
+                            id="spelling_all"
+                            checked />전체선택
+                        </div>
                       </td>
                     </tr>
                     <tr>
                       <td></td>
                       <td class="various-options">
-                        <div><input type="checkbox" name="spelling_1" id="spelling_1" class="spelling" value="오타" checked>오타</div>
-                        <div><input type="checkbox" name="spelling_2" id="spelling_2" class="spelling" value="띄어쓰기" checked>띄어쓰기</div>
-                        <div><input type="checkbox" name="spelling_3" id="spelling_3" class="spelling" value="문장부호" checked>문장부호</div>
+                        <div>
+                          <input
+                            type="checkbox"
+                            name="spelling_1"
+                            id="spelling_1"
+                            class="spelling"
+                            value="오타"
+                            checked />오타
+                        </div>
+                        <div>
+                          <input
+                            type="checkbox"
+                            name="spelling_2"
+                            id="spelling_2"
+                            class="spelling"
+                            value="띄어쓰기"
+                            checked />띄어쓰기
+                        </div>
+                        <div>
+                          <input
+                            type="checkbox"
+                            name="spelling_3"
+                            id="spelling_3"
+                            class="spelling"
+                            value="문장부호"
+                            checked />문장부호
+                        </div>
                       </td>
                     </tr>
                     <tr>
                       <td><label for="option5">분위기</label></td>
                       <td class="various-options">
-                        <div><input type="radio" name="mood" id="mood_1" value=0 checked>감정없음</div>
-                        <div><input type="radio" name="mood" id="mood_2" value=1>유감</div>
-                        <div><input type="radio" name="mood" id="mood_3" value=2>축하</div>
+                        <div>
+                          <input
+                            type="radio"
+                            name="mood"
+                            id="mood_1"
+                            value="0"
+                            checked />감정없음
+                        </div>
+                        <div>
+                          <input
+                            type="radio"
+                            name="mood"
+                            id="mood_2"
+                            value="1" />유감
+                        </div>
+                        <div>
+                          <input
+                            type="radio"
+                            name="mood"
+                            id="mood_3"
+                            value="2" />축하
+                        </div>
                       </td>
                     </tr>
                   </tbody>
                 </table>
               </form>
               <div id="optionDescriptionArea">
-                <div>
-                  //Description of the option being selected...
-                </div>
-                <textarea id="exampleArea" value disabled>//Show an example result...</textarea>
+                <div>//Description of the option being selected...</div>
+                <textarea id="exampleArea" value disabled>
+                      //Show an example result...
+                </textarea>
               </div>
             </div>
           </div>
           <div class="modal-footer">
             <div class="modal-footer-top-grad"></div>
-            <button type="button" id="improveBtn" class="btn btn-generate">교정 ❯</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="improveBtn" class="btn btn-generate">
+              교정 ❯</button
+            >&nbsp;&nbsp;&nbsp;&nbsp;
             <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>-->
           </div>
         </div>
         <div id="improveEmailModal_2" class="modal-content">
           <div class="modal-header flex-center">
-            <a class="modal-title-other" href="./modal_generateEmail.html"><h6>내용 생성</h6></a>
+            <a class="modal-title-other" href="./modal_generateEmail.html"
+              ><h6>내용 생성</h6></a
+            >
             <h5 class="modal-title">내용 교정</h5>
             <!--<button type="button" class;="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none"'
               <span aria-hidden="true">&times;</span>
@@ -222,13 +536,9 @@
             <div class="view-result wrapper-flex-row">
               <div id="input">
                 원본
-                <textarea id="inputEmailArea" disabled>
-
-                </textarea>
+                <textarea id="inputEmailArea" disabled> </textarea>
               </div>
-              <div>
-                →
-              </div>
+              <div>→</div>
               <div id="loading" class="square">
                 <div class="spin"></div>
               </div>
@@ -240,14 +550,20 @@
           </div>
           <div class="modal-footer">
             <div class="modal-footer-top-grad"></div>
-            <button type="button" id="backToOptionBtn" class="btn btn-generate">❮ 옵션 재설정</button>&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" id="applyBtn" class="btn btn-primary">적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp; 
+            <button type="button" id="backToOptionBtn" class="btn btn-generate">
+              ❮ 옵션 재설정</button
+            >&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="applyBtn" class="btn btn-primary">
+              적용(복사)</button
+            >&nbsp;&nbsp;&nbsp;&nbsp;
             <!--<button type="button" class="btn btn-secondary">취소</button>-->
           </div>
         </div>
       </div>
     </div>
-    <script type="text/javascript" src="assets/js/modal_improveEmail.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/js/modal_improveEmail.js"></script>
     <script type="text/javascript" src="assets/js/modal.js"></script>
   </body>
-  </html>
+</html>
