@@ -113,12 +113,11 @@ var improveEmail = {
     view2.style.display = "block";
   },
 
-  showResult: function (result) {
-    document.getElementById("loading").style.display = "none";
-    document.getElementById("output").style.display = "flex";
-    document.getElementById("outputEmailArea").value =
-      result.correctedBody ?? "서버에서 결과 불러오기에 실패했습니다:(";
-  },
+    showResult: function(result) { 
+        document.getElementById("loading").style.display = "none";
+        document.getElementById("output").style.display = "flex";
+        document.getElementById("outputEmailArea").value = result.correctedBody ?? "서버에서 결과 불러오기에 실패했습니다:(";
+    },
 
   backToOption: function () {
     var view1 = document.getElementById("improveEmailModal_1");
@@ -127,12 +126,12 @@ var improveEmail = {
     view2.style.display = "none";
   },
 
-  Apply: async function (e) {
-    let resultText = document.getElementById("outputEmailArea").value;
-    await navigator.clipboard.writeText(resultText);
-    console.log("copied to clipboard");
-    e.target.innerText += "✔";
-  },
+    Apply: async function(e) {
+        let resultText = document.getElementById("outputEmailArea").value;
+        await navigator.clipboard.writeText(resultText)
+        console.log("copied to clipboard");
+        e.target.innerText += "✔";
+    },
 
   MaintainDraggedText: function () {
     const emailBody = document.getElementById("emailBody");

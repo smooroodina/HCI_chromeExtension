@@ -5,192 +5,42 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
-      a {
-        text-decoration: none;
-      }
-      html,
-      body,
-      #HCI_modalWindow {
-        width: 600px;
-        height: 550px;
-      } /* this is the maximum size!!! */
-      textarea {
-        padding: 5px;
-        border: 1px solid slategray;
-        border-radius: 2px;
-        resize: none;
-      }
-      textarea:disabled {
-        background-color: lightgoldenrodyellow;
-      }
-      .flex-center {
-        display: flex;
-        justify-content: center;
-        align-items: center;
-      }
-      .modal {
-        display: flex;
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
-        z-index: 5;
-      }
-      .modal-overlay {
-        position: fixed;
-        width: 100%;
-        height: 100%;
-        background-color: black;
-        opacity: 30%;
-        z-index: 6;
-      }
-      .modal-dialog {
-        position: relative;
-        margin: 0 auto;
-        width: auto;
-        height: auto;
-        overflow: hidden;
-        text-align: center;
-        background-color: white;
-        z-index: 7;
-      }
-      #improveEmailModal_1 {
-        display: block;
-        overflow-x: hidden;
-        width: 600px;
-        height: 550px;
-      }
-      #improveEmailModal_1::-webkit-scrollbar {
-        display: none;
-      }
-      #improveEmailModal_2 {
-        display: none;
-        width: 600px;
-        height: 550px;
-      }
-      .modal-header {
-        z-index: 2;
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 50px;
-        background-color: slategray;
-        color: white;
-        font-size: x-large;
-      }
-      .headerblank {
-        height: 50px;
-      }
-      .modal-title {
-        position: absolute;
-        padding: 5px;
-        left: 130px;
-        background-color: rgb(100, 100, 150);
-        color: yellow;
-      }
-      .modal-title-other {
-        position: absolute;
-        padding-right: 20px;
-        left: 30px;
-        border-right: 2px solid white;
-        color: #f0f0f0;
-        cursor: pointer;
-      }
-      .modal-title-other:hover {
-        color: yellow;
-      }
-      .close {
-        all: unset;
-        position: absolute;
-        right: 20px;
-        font-size: x-large;
-      }
-      .close:hover {
-        color: skyblue;
-      }
-      .modal-body {
-        margin: 0;
-        height: 450px;
-      }
-      .content-form {
-        display: flex;
-        flex-direction: column;
-        margin: 0;
-      }
-      .content-form td {
-        padding-top: 5px;
-      }
-      .content-form label {
-        display: inline-block;
-        width: 70px;
-      }
-      .content-form input[type="text"],
-      .content-form textarea {
-        width: 350px;
-      }
-      .content-form table {
-        width: 200px;
-        font-size: small;
-      }
-      .content-form tr > td:first-child {
-        font-weight: bold;
-      }
-      .content-form tr > td:nth-child(2) {
-        text-align: left;
-      }
-      .modal-footer {
-        position: absolute;
-        bottom: 0px;
-        width: 100%;
-        height: 40px;
-        background-color: white;
-        text-align: center;
-      }
-      .modal-footer-top-grad {
-        position: absolute;
-        bottom: 40px;
-        width: 100%;
-        height: 20px;
-        background: linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0),
-          rgba(255, 255, 255, 1)
-        );
-      }
-      .btn {
-        all: unset;
-        margin-top: 10px;
-        padding: 2px 15px;
-        border: 1px solid slategray;
-        border-radius: 5px;
-        font-size: medium;
-      }
-      .btn:disabled {
-        opacity: 50%;
-      }
-      .btn-primary {
-        background-color: skyblue;
-        color: white;
-      }
-      .btn-secondary {
-        background-color: white;
-        color: black;
-      }
-      .btn-generate {
-        background-color: yellow;
-        color: black;
-      }
-      .btn:hover {
-        border-color: black;
-        color: black;
-        cursor: pointer;
-      }
-      .btn:active {
-        border-color: lightgray;
-        color: lightgrey;
-      }
+      a { text-decoration: none; }
+      html, body, #HCI_modalWindow { width: 600px; height: 550px; } /* this is the maximum size!!! */
+      textarea { padding: 5px; border: 1px solid slategray; border-radius: 2px; resize: none;}
+      textarea:disabled { background-color: lightgoldenrodyellow; }
+      .flex-center { display: flex; justify-content: center; align-items: center; }
+      .modal { display: flex; position:absolute; top: 0; left: 0; width: 100%; height: 100%; z-index: 5; }
+      .modal-overlay { position:fixed; width: 100%; height: 100%; background-color: black; opacity: 30%; z-index: 6; }
+      .modal-dialog { position: relative; margin: 0 auto; width: auto; height: auto; overflow: hidden; text-align:center; background-color: white; z-index: 7; }
+      #improveEmailModal_1 { display:block; overflow-x: hidden; width:600px; height:550px; }
+      #improveEmailModal_1::-webkit-scrollbar { display: none; }
+      #improveEmailModal_2 { display:none; width:600px; height:550px; }
+      .modal-header { z-index: 2; position: fixed; top: 0; left: 0; width: 100%; height: 50px; background-color: slategray; color:white; font-size:x-large; }
+      .headerblank { height: 50px; }
+      .modal-title { position: absolute; padding:5px; left: 130px; background-color: rgb(100, 100, 150);  color: yellow; }
+      .modal-title-other { position: absolute; padding-right:20px; left: 30px; border-right: 2px solid white; color: #f0f0f0; cursor: pointer; }
+      .modal-title-other:hover { color: yellow; }
+      .close { all: unset; position: absolute; right:20px; font-size: x-large;}
+      .close:hover { color: skyblue; }
+      .modal-body { margin: 0; height: 450px; }
+      .content-form { display: flex; flex-direction: column; margin: 0;}
+      .content-form td { padding-top: 5px; }
+      .content-form label { display: inline-block; width: 70px; }
+      .content-form input[type="text"] , .content-form textarea { width: 350px; }
+      .content-form table { width: 200px; font-size: small; }
+      .content-form tr > td:first-child { font-weight: bold; }
+      .content-form tr > td:nth-child(2) { text-align: left; }
+      .modal-footer { position:absolute; bottom: 0px; width: 100%; height:40px; background-color: white; text-align: center; }
+      .modal-footer-top-grad { position:absolute; bottom: 40px; width: 100%; height:20px; 
+        background: linear-gradient(to bottom, rgba(255, 255, 255, 0), rgba(255, 255, 255, 1)); }
+      .btn { all: unset; margin-top: 10px; padding: 2px 15px; border: 1px solid slategray; border-radius: 5px; font-size: medium; }
+      .btn:disabled { opacity: 50%; }
+      .btn-primary { background-color: skyblue; color: white; }
+      .btn-secondary { background-color: white; color: black; }
+      .btn-generate { background-color: yellow; color: black; }
+      .btn:hover { border-color: black; color: black; cursor: pointer; }
+      .btn:active { border-color: lightgray; color: lightgrey; }
       /** .range-label { display: block; width: 200px; }
        .range-left { display: inline-block; position: absolute; left: 0; }
        .range-right { display: inline-block; position: absolute; right: 0; } **/
@@ -550,12 +400,8 @@
           </div>
           <div class="modal-footer">
             <div class="modal-footer-top-grad"></div>
-            <button type="button" id="backToOptionBtn" class="btn btn-generate">
-              ❮ 옵션 재설정</button
-            >&nbsp;&nbsp;&nbsp;&nbsp;
-            <button type="button" id="applyBtn" class="btn btn-primary">
-              적용(복사)</button
-            >&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="backToOptionBtn" class="btn btn-generate">❮ 옵션 재설정</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="applyBtn" class="btn btn-primary">적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp; 
             <!--<button type="button" class="btn btn-secondary">취소</button>-->
           </div>
         </div>
@@ -565,5 +411,4 @@
       type="text/javascript"
       src="assets/js/modal_improveEmail.js"></script>
     <script type="text/javascript" src="assets/js/modal.js"></script>
-  </body>
 </html>
