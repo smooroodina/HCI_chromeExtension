@@ -1,8 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Document</title>
     <style>
       a { text-decoration: none; }
@@ -33,8 +33,7 @@
       .btn:disabled { opacity: 50%; }
       .btn-primary { margin-bottom: 10px; background-color: skyblue; color: white; }
       .btn-secondary { background-color: white; color: black; }
-      .btn-generate { border: 2px dashed black; background-color: yellow; color: black; font-weight: bold; }
-      .btn-generate:hover { background-color: plum; }
+      .btn-generate { background-color: yellow; color: black; }
       .btn:hover { border-color: black; color: black; cursor: pointer; }
       .btn:active { border-color: lightgray; color: lightgrey; }
       #resultArea { width: 500px; height:150px; background-color: lightcyan; }
@@ -45,59 +44,84 @@
         justify-content: center;
         align-items: center;
         width: 500px;
-        height:156px;
+        height: 156px;
       }
       .spin {
         height: 45px;
         width: 45px;
         border-radius: 50%;
-        border:dashed 5px black;
+        border: dashed 5px black;
         -webkit-animation-name: spin;
         -webkit-animation-duration: 2.5s;
         -webkit-animation-iteration-count: infinite;
         -webkit-animation-timing-function: linear;
       }
       @-webkit-keyframes spin {
-        from   {  -webkit-transform: rotate(0deg); }
-        to   {  -webkit-transform: rotate(360deg); }
+        from {
+          -webkit-transform: rotate(0deg);
+        }
+        to {
+          -webkit-transform: rotate(360deg);
+        }
       }
-
     </style>
   </head>
   <body>
-    <div id="HCI_modalWindow" class="modal flex-center" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div
+      id="HCI_modalWindow"
+      class="modal flex-center"
+      tabindex="-1"
+      role="dialog"
+      aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
       <!--<div class="modal-overlay"></div>-->
       <div class="modal-dialog" role="document">
         <div id="generateEmailModal" class="modal-content">
           <div class="modal-header flex-center">
             <h5 class="modal-title" id="exampleModalLabel">*내용 생성</h5>
-            <a class="modal-title-other" href="./modal_improveEmail.html"><h6>내용 교정</h6></a>
+            <a class="modal-title-other" href="./modal_improveEmail.html"
+              ><h6>내용 교정</h6></a
+            >
             <!--<button type="button" class="close" onclick='var modal = document.getElementById("HCI_modalWindow"); modal.style.display = "none";'
               <span aria-hidden="true">&times;</span>
             </button>-->
           </div>
           <div class="modal-body flex-center">
             <!-- Form으로 되어있긴 하지만... submit 안하고 fetch로 API 요청할것임 -->
-            <form id="formGenerateEmail" class="content-form" action="/createEmail" method="post">
+            <form
+              id="formGenerateEmail"
+              class="content-form"
+              action="/createEmail"
+              method="post">
               <table>
                 <tbody>
                   <tr>
                     <td>
-                      <br><br>
+                      <br /><br />
                       <label for="receiver"><h4>받는 사람</h4></label
-                      ><input type="text" name="receiver" id="receiver" value>
+                      ><input type="text" name="receiver" id="receiver" value />
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <label for="purpose" id="label-purpose"><h4>메일 목적</h4></label
-                      ><textarea name="purpose" id="purpose" placeholder="ex) 교수님과 상담으로 연구실 방문 목적" value></textarea>
+                      <label for="purpose" id="label-purpose"
+                        ><h4>메일 목적</h4></label
+                      ><textarea
+                        name="purpose"
+                        id="purpose"
+                        placeholder="ex) 교수님과 상담으로 연구실 방문 목적"
+                        value></textarea>
                     </td>
                   </tr>
                   <tr>
                     <td>
-                      <button type="button" id="generateBtn" class="btn btn-generate">내용 생성</button>
-                      <br><br>
+                      <button
+                        type="button"
+                        id="generateBtn"
+                        class="btn btn-generate">
+                        내용 생성
+                      </button>
+                      <br /><br />
                     </td>
                   </tr>
                   <tr>
@@ -105,7 +129,10 @@
                       <div id="loading" class="square">
                         <div class="spin"></div>
                       </div>
-                      <textarea name="result" id="resultArea" disabled></textarea>
+                      <textarea
+                        name="result"
+                        id="resultArea"
+                        disabled></textarea>
                     </td>
                   </tr>
                 </tbody>
@@ -113,13 +140,15 @@
             </form>
           </div>
           <div class="modal-footer">
-            <button type="button" id="applyBtn" class="btn btn-primary" disabled>적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp;
+            <button type="button" id="applyBtn" class="btn btn-primary">적용(복사)</button>&nbsp;&nbsp;&nbsp;&nbsp;
             <!--<button type="button" class="btn btn-secondary" data-dismiss="modal">취소</button>-->  
           </div>
         </div>
       </div>
     </div>
     <script type="text/javascript" src="assets/js/modal.js"></script>
-    <script type="text/javascript" src="assets/js/modal_generateEmail.js"></script>
+    <script
+      type="text/javascript"
+      src="assets/js/modal_generateEmail.js"></script>
   </body>
 </html>
